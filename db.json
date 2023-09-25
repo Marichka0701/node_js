@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "John",
+    "age": 30,
+    "sex": "Male"
+  },
+  {
+    "id": 2,
+    "name": "Alice",
+    "age": 25,
+    "sex": "Female"
+  },
+  {
+    "id": 3,
+    "name": "Bob",
+    "age": 35,
+    "sex": "Male"
+  },
+  {
+    "id": 4,
+    "name": "Eva",
+    "age": 28,
+    "sex": "Female"
+  },
+  {
+    "id": 5,
+    "name": "Marichka",
+    "age": 18,
+    "sex": "Female"
+  },
+  {
+    "id": 6,
+    "name": "Olivia",
+    "age": 22,
+    "sex": "Female"
+  },
+  {
+    "id": 7,
+    "name": "David",
+    "age": 32,
+    "sex": "Male"
+  },
+  {
+    "id": 8,
+    "name": "Sophia",
+    "age": 27,
+    "sex": "Female"
+  },
+  {
+    "id": 9,
+    "name": "Daniel",
+    "age": 29,
+    "sex": "Male"
+  },
+  {
+    "id": 10,
+    "name": "Emma",
+    "age": 24,
+    "sex": "Female"
+  },
+  {
+    "id": 11,
+    "name": "Nastya",
+    "age": 21,
+    "sex": "Female"
+  },
+  {
+    "id": 11,
+    "name": "ffff",
+    "age": 1,
+    "sex": "Female"
+  }
+]
