@@ -30,7 +30,7 @@ module.exports = {
         '@typescript-eslint/no-explicit-any': 'off',
         "simple-import-sort/imports": "error",
         "import/first": "error",
-        "import/newline-after-import": ["error", { "count": 1 }],
+        "import/newline-after-import": ["error", {"count": 1}],
         "import/no-duplicates": "error",
         'no-console': 'warn',
         'sort-imports': ['error', {

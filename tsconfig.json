@@ -20,7 +20,7 @@
     /* Skip type checking all .d.ts files. */
     "noUnusedLocals": true,
     /* Enable error reporting when local variables aren't read. */
-    "noUnusedParameters": true,
+    "noUnusedParameters": false,
     /* Raise an error when a function parameter isn't read. */
     "allowSyntheticDefaultImports": true,
     /* Allow 'import x from y' when a module doesn't have a default export. */
