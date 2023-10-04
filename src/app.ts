@@ -1,9 +1,8 @@
-import express, { Request, Response } from "express";
+import express, { NextFunction, Request, Response } from "express";
 import * as mongoose from "mongoose";
 
 import { configs } from "./configs/config";
-import { User } from "./models/User.model";
-import { IUser } from "./types/user.type";
+import { userRouter } from "./routers/user.router";
 
 const app = express();
 
@@ -17,41 +16,9 @@ app.listen(5000, async () => {
   console.log(`Server running on PORT ${PORT}`);
 });
 
-app.get(
-  "/users",
-  async (req: Request, res: Response): Promise<Response<IUser[]>> => {
-    const users = await User.find();
-    return res.json(users);
-  },
-);
+app.use("/users", userRouter);
 
-app.post(
-  "/users",
-  async (req: Request, res: Response): Promise<Response<IUser>> => {
-    const createdUser = req.body;
-    await User.create({ ...createdUser });
-
-    return res.json(createdUser);
-  },
-);
-
-app.delete(
-  "/users/:email",
-  async (req: Request, res: Response): Promise<Response<IUser>> => {
-    const { email } = req.params;
-    const deletedUser = await User.deleteOne({ email });
-
-    return res.json(deletedUser);
-  },
-);
-
-app.put(
-  "/users:/email",
-  async (req: Request, res: Response): Promise<Response<IUser>> => {
-    const updatedUser = req.body;
-    const { email } = req.params;
-
-    await User.findOneAndUpdate({ email }, { ...updatedUser });
-    return res.json(updatedUser);
-  },
-);
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+  const status = err.status || 500;
+  res.status(status).json(err.message);
+});
