@@ -9,7 +9,7 @@ class UserController {
     req: Request,
     res: Response,
     next: NextFunction,
-  ): Promise<Response<IUser[]> | void> {
+  ): Promise<Response<IUser[]>> {
     try {
       const users = await userService.getAll();
 
@@ -19,9 +19,13 @@ class UserController {
     }
   }
 
-  public async getById(req: Request, res: Response, next: NextFunction) {
+  public async getById(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<Response<IUser>> {
     try {
-      const user = req?.res?.locals as IUser;
+      const user = req.res.locals as IUser;
 
       return res.json(user);
     } catch (e) {
@@ -29,9 +33,13 @@ class UserController {
     }
   }
 
-  public async create(req: Request, res: Response, next: NextFunction) {
+  public async create(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<Response<IUser>> {
     try {
-      const user = req?.res?.locals as IUser;
+      const user = req.res.locals as IUser;
 
       const createdUser = await userRepository.create(user);
       return res.json(createdUser).status(201);
@@ -40,22 +48,30 @@ class UserController {
     }
   }
 
-  public async deleteById(req: Request, res: Response, next: NextFunction) {
+  public async deleteById(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<Response<void>> {
     try {
       const { id } = req.params;
 
       await userService.deleteById(id);
 
-      return res.status(200);
+      return res.sendStatus(204);
     } catch (e) {
       next(e);
     }
   }
 
-  public async updateById(req: Request, res: Response, next: NextFunction) {
+  public async updateById(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<Response<IUser>> {
     try {
       const { id } = req.params;
-      const validDataForUpdating = req?.res?.locals as IUser;
+      const validDataForUpdating = req.res.locals as IUser;
 
       const updatedUser = await userService.updateById(
         id,
