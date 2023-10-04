@@ -36,22 +36,24 @@ app.post(
 );
 
 app.delete(
-  "/users/:email",
+  "/users/:id",
   async (req: Request, res: Response): Promise<Response<IUser>> => {
-    const { email } = req.params;
-    const deletedUser = await User.deleteOne({ email });
+    const { id } = req.params;
+    const deletedUser = await User.deleteOne({ _id: id });
 
     return res.json(deletedUser);
   },
 );
 
 app.put(
-  "/users:/email",
+  "/users/:id",
   async (req: Request, res: Response): Promise<Response<IUser>> => {
-    const updatedUser = req.body;
-    const { email } = req.params;
+    const { id } = req.params;
+    const data = req.body;
 
-    await User.findOneAndUpdate({ email }, { ...updatedUser });
-    return res.json(updatedUser);
+    const updatedUser = await User.findByIdAndUpdate(id, data, {
+      returnDocument: "after",
+    });
+    return res.json(updatedUser).status(200);
   },
 );
